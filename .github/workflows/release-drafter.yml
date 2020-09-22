@@ -16,12 +16,3 @@ jobs:
         id: release-drafter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Debug
-        run: |
-          echo id=${{ steps.release-drafter.outputs.id }}
-          echo name=${{ steps.release-drafter.outputs.name }}
-          echo tag_name=${{ steps.release-drafter.outputs.tag_name }}
-          echo body=${{ steps.release-drafter.outputs.body }}
-          echo html_url=${{ steps.release-drafter.outputs.html_url }}
-          echo upload_url=${{ steps.release-drafter.outputs.upload_url }}

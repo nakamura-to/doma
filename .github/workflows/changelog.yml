@@ -1,0 +1,26 @@
+name: Changelog
+
+on:
+  release:
+    types: [prereleased]
+    branches:
+      - ci/sync-changelog
+
+jobs:
+  update_release_draft:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Update CHANGELOG.md
+        run: sed -i "1i${{ github.event.release.body }}\n" ./CHANGELOG.md.md
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: "Update CHANGELOG.md"
+          add: "CHANGELOG.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
