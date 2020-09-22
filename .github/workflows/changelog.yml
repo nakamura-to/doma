@@ -7,7 +7,7 @@ on:
       - ci/sync-changelog
 
 jobs:
-  update_release_draft:
+  changelog:
     runs-on: ubuntu-latest
 
     steps:
