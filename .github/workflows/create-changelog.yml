@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Update CHANGELOG.md
-        run: ./gradlew updateChangelog -Pbody="${{ github.event.release.body }}" -PreleaseHtmlUrl=${{ github.event.release.html_url }} -PreleaseName=${{ github.event.release.name }}
+        run: ./gradlew updateChangelog -PreleaseBody="${{ github.event.release.body }}" -PreleaseHtmlUrl=${{ github.event.release.html_url }} -PreleaseName=${{ github.event.release.name }}
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
