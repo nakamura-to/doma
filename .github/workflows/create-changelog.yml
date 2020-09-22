@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ci/sync-changelog
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -31,6 +33,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
+          ref: ci/sync-changelog
           message: "Update CHANGELOG.md"
           add: "*.md"
         env:
