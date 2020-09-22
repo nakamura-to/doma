@@ -12,8 +12,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ci/sync-changelog
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
       - name: Update CHANGELOG.md
-        run: sed -i "1i${{ github.event.release.body }}\n" ./CHANGELOG.md.md
+        run: ./gradlew updateChangelog -PreleaseBody="${{ github.event.release.body }}"
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
