@@ -2,7 +2,7 @@ name: Changelog
 
 on:
   release:
-    types: [prereleased]
+    types: [released]
     branches:
       - ci/sync-changelog
 
