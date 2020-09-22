@@ -236,9 +236,12 @@ rootProject.apply {
 
         register("updateChangelog") {
             val releaseBody: String by project
+            val releaseHtmlUrl: String by project
+            val releaseName: String by project
             val path = file("CHANGELOG.md").toPath()
             val lines = java.nio.file.Files.readAllLines(path)
-            java.nio.file.Files.write(path, releaseBody.toByteArray(), java.nio.file.StandardOpenOption.WRITE, java.nio.file.StandardOpenOption.TRUNCATE_EXISTING)
+            java.nio.file.Files.write(path, listOf("# [$releaseName]($releaseHtmlUrl)"), java.nio.file.StandardOpenOption.WRITE, java.nio.file.StandardOpenOption.TRUNCATE_EXISTING)
+            java.nio.file.Files.write(path, releaseBody.toByteArray(), java.nio.file.StandardOpenOption.APPEND)
             java.nio.file.Files.write(path, lines, java.nio.file.StandardOpenOption.APPEND)
         }
     }
