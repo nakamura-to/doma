@@ -2,25 +2,23 @@ name: Changelog
 
 on:
   release:
-    types: [published]
-    branches:
-      - ci/sync-changelog
+    types: 
+      - published
 
 jobs:
   changelog:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v2
+        with:
+          ref: ci/sync-changelog
       - name: Update CHANGELOG.md
         run: sed -i "1i${{ github.event.release.body }}\n" ./CHANGELOG.md.md
-
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
           message: "Update CHANGELOG.md"
           add: "CHANGELOG.md"
+          ref: ci/sync-changelog
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
