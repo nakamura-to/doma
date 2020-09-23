@@ -1,3 +1,11 @@
+# [2.40.16](https://github.com/nakamura-to/doma/releases/tag/2.40.16)
+
+
+## Bug Fixes
+
+* Commit CHANGELOG.md to the master branch ([#7](https://github.com/domaframework/doma/pull/7))
+
+
 # [2.42.0](https://github.com/domaframework/doma/releases/tag/2.42.0)
 
 ## New Features
